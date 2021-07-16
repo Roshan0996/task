@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <figure class="highcharts-figure">
+        <div>
+            <a href="index.html">Student A</a>
+            <a href="index2.html">Student B</a>
+            <a href="">Student C</a>
+            <a href="index4.html">Student D</a>
+            <a href="index5.html">All students</a><br><br>
+        </div>
+        <div id="container"></div>
+        <p class="highcharts-description">
+            
+        </p>
+    </figure>
+    <script>
+        Highcharts.chart('container', {
+
+chart: {
+    type: 'column'
+},
+
+title: {
+    text: 'Marks of Student C'
+},
+
+xAxis: {
+    categories: ['January', 'February', 'March ']
+},
+
+yAxis: {
+    allowDecimals: false,
+    min: 0,
+    title: {
+        text: 'Marks'
+    }
+},
+
+tooltip: {
+    formatter: function () {
+        return '<b>' + this.x + '</b><br/>' +
+            this.series.name + ': ' + this.y + '<br/>' +
+            'Total: ' + this.point.stackTotal;
+    }
+},
+
+plotOptions: {
+    column: {
+        stacking: 'normal'
+    }
+},
+
+series: [{
+    name: 'Subject a',
+    data: [77, 68, 72],
+    stack: 'Student A'
+}, {
+    name: 'Subject b',
+    data: [70, 65, 75],
+    stack: 'Student B'
+}, {
+    name: 'Subject c',
+    data: [56, 70, 85],
+    stack: 'Student C'
+}, {
+    name: 'Subject d',
+    data: [61, 67, 73],
+    stack: 'Student D'
+}]
+});
+    </script>
+  </body>
+</html>
